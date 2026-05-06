@@ -1,0 +1,12 @@
+{% extends "homesports/base.html" %}
+
+{% block title %}Editar Moto{% endblock %}
+
+{% block body %}
+    <h1>Editar Moto</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Actualizar</button>
+    </form>
+{% endblock %}

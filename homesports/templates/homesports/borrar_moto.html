@@ -1,0 +1,12 @@
+{% extends "homesports/base.html" %}
+
+{% block title %}Borrar Moto{% endblock %}
+
+{% block body %}
+    <h1>Borrar Moto</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Borrar</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "homesports/base.html" %}
+{% block body %}
+
+    <h1>Formulario para cargar motos</h1>
+    <a href="{% url 'crear_moto' %}">Nueva Moto</a>
+
+    <hr>
+
+    <h1>Mis Motos</h1>
+    {% for moto in motos %}
+        <li>
+            <h2>{{ moto.marca }} {{ moto.modelo }}</h2>
+            <p>Categoria: {{ moto.categoria }}</p>
+            <p>Año: {{ moto.año }}</p>
+            <p>{{ moto.descripcion }}</p>
+        </li>
+        <a href="{% url 'editar_moto' moto.id %}">Editar</a>
+        <a href="{% url 'eliminar_moto' moto.id %}">Eliminar</a>
+    {% empty %}
+        <p>No hay motos cargadas aún.</p>
+    {% endfor %}
+{% endblock %}
