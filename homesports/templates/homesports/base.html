@@ -1,19 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{%block title%} Motosports {% endblock%}</title>
+    <title>{% block title %}Motosports{% endblock %}</title>
 </head>
 <body>
+
     <nav>
-        <a href="/">Inicio</a>
-        <a href="/home">Motos</a>
-        
+        <a href="{% url 'index' %}">Inicio</a>
+        <a href="{% url 'home' %}">Motos</a>
+
+        {% if user.is_authenticated %}
+            <span>Hola, {{ user.username }}</span>
+            <a href="{% url 'logout' %}">Cerrar sesión</a>
+        {% else %}
+            <a href="{% url 'login' %}">Iniciar sesión</a>
+            <a href="{% url 'registro' %}">Registrarse</a>
+        {% endif %}
     </nav>
 
-    {% block body %}
+    <hr>
 
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    {% block body %}
     {% endblock %}
+
 </body>
 </html>

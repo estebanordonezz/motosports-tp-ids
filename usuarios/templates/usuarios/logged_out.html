@@ -1,0 +1,11 @@
+{% extends 'homesports/base.html' %}
+
+{% block title %}Sesión cerrada{% endblock %}
+
+{% block body %}
+<h1>Sesión cerrada</h1>
+
+<p>Cerraste sesión correctamente.</p>
+
+<a href="{% url 'login' %}">Volver a iniciar sesión</a>
+{% endblock %}
