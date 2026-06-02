@@ -1,12 +1,29 @@
-{% extends "homesports/base.html" %}
+{% extends 'homesports/base.html' %}
 
-{% block title %}Crear Moto{% endblock %}
+{% block title %}Agregar moto | MotoSports{% endblock %}
 
 {% block body %}
-    <h1>Crear Nueva Moto</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-7">
+        <div class="card p-4">
+            <h2 class="mb-4 text-center">Agregar moto</h2>
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-bordo w-100 mt-3">
+                    Guardar moto
+                </button>
+            </form>
+
+            <a href="{% url 'home' %}" class="btn btn-outline-bordo w-100 mt-3">
+                Volver
+            </a>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

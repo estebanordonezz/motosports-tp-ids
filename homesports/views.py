@@ -1,20 +1,18 @@
-from django.shortcuts import HttpResponse, redirect, render, get_object_or_404
-from django.contrib.auth.decorators import login_required, permission_required
+from django.shortcuts import redirect, render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .forms import MotoForm
 from .models import Moto
 
-contexto = {"nombre": "Roberto Carlos",
-            "laPosee": True,
-            "motos": ["Kawasaki", "Honda", "Yamaha"],
-            }
 
 def home(request):
     motos = Moto.objects.all()
     contexto = {"motos": motos}
     return render(request, "homesports/motos.html", contexto)
 
+
 def index(request):
     return render(request, "homesports/index.html")
+
 
 @login_required
 def crear_moto(request):
@@ -26,11 +24,11 @@ def crear_moto(request):
     else:
         form = MotoForm()
 
-        return render(request, 'homesports/crear_moto.html', {'form': form})
-    
+    return render(request, 'homesports/crear_moto.html', {'form': form})
+
+
 @login_required
 def editar_moto(request, id):
-
     moto = get_object_or_404(Moto, id=id)
 
     if request.method == "POST":
@@ -43,9 +41,9 @@ def editar_moto(request, id):
 
     return render(request, 'homesports/editar_moto.html', {'form': form})
 
+
 @login_required
 def eliminar_moto(request, id):
-
     moto = get_object_or_404(Moto, id=id)
 
     if request.method == "POST":
@@ -53,4 +51,3 @@ def eliminar_moto(request, id):
         return redirect('home')
 
     return render(request, 'homesports/borrar_moto.html', {'moto': moto})
-

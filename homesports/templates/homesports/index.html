@@ -1,9 +1,42 @@
-{% extends "homesports/base.html" %}
+{% extends 'homesports/base.html' %}
 
-{% block title %}Bienvenido a MotoSports{% endblock %}
+{% block title %}Inicio | MotoSports{% endblock %}
 
 {% block body %}
-    <h1>Bienvenido a MotoSports 🏍️</h1>
-    <p>El mejor sitio sobre motos del mundo.</p>
-    <a href="/home">Ver motos</a>
+
+<section class="hero text-center">
+    <h1 class="display-4 fw-bold">Bienvenido a MotoSports 🏍️</h1>
+
+    <p class="lead mt-3">
+        Gestioná motos deportivas con imágenes y acceso de usuario.
+    </p>
+
+    <a href="{% url 'home' %}" class="btn btn-bordo btn-lg mt-3">
+        Ver motos
+    </a>
+</section>
+
+<section class="row mt-5">
+    <div class="col-md-4 mb-3">
+        <div class="card p-3 h-100">
+            <h4>Motos deportivas</h4>
+            <p>Consultá modelos, categorías y detalles de cada moto.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card p-3 h-100">
+            <h4>Imágenes</h4>
+            <p>Cargá imágenes para que cada moto se vea mejor presentada.</p>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card p-3 h-100">
+            <h4>Usuarios</h4>
+            <p>Iniciá sesión para agregar, editar o eliminar motos.</p>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
