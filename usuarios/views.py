@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib import messages
+from .forms import UsuarioPersonalizadoForm
 
 
 def registro(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = UsuarioPersonalizadoForm(request.POST, request.FILES)
 
         if form.is_valid():
             usuario = form.save()
@@ -14,7 +15,7 @@ def registro(request):
             messages.success(request, 'Usuario registrado correctamente.')
             return redirect('home')
     else:
-        form = UserCreationForm()
+        form = UsuarioPersonalizadoForm()
 
     return render(request, 'usuarios/registro.html', {'form': form})
 
