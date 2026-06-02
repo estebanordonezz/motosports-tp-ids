@@ -17,7 +17,7 @@ def index(request):
 
 def crear_moto(request):
     if request.method == "POST":
-        form = MotoForm(request.POST)
+        form = MotoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('home')
@@ -31,7 +31,7 @@ def editar_moto(request, id):
     moto = get_object_or_404(Moto, id=id)
 
     if request.method == "POST":
-        form = MotoForm(request.POST, instance=moto)
+        form = MotoForm(request.POST, request.FILES, instance=moto)
         if form.is_valid():
             form.save()
             return redirect('home')

@@ -12,6 +12,11 @@ class Moto(models.Model):
     modelo = models.CharField(max_length=100)
     año = models.IntegerField()
     descripcion = models.TextField(blank=True)
+    imagen = models.ImageField(
+        upload_to="motos/",
+        null = True,
+        blank=True
+    )
 
     def __str__(self):
         return f"{self.categoria} - {self.marca} {self.modelo} ({self.año})"

@@ -12,6 +12,9 @@
             <h2>{{ moto.marca }} {{ moto.modelo }}</h2>
             <p>Categoria: {{ moto.categoria }}</p>
             <p>Año: {{ moto.año }}</p>
+            {% if moto.imagen %}
+                <img src="{{ moto.imagen.url }}" alt="{{ moto.titulo }}" width="300">
+            {% endif %}
             <p>{{ moto.descripcion }}</p>
         </li>
         <a href="{% url 'editar_moto' moto.id %}">Editar</a>
